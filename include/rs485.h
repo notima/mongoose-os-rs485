@@ -16,8 +16,9 @@ struct rs485_port {
  * This method must be called before the port can be used
  * @param port The port to initialize
  * @param baudRate The communication speed that will be used
+ * @return true if port was successfully set up, otherwise false
  */
-void rs485_begin(struct rs485_port port, int baudRate);
+bool rs485_begin(struct rs485_port port, int baudRate);
 
 /**
  * Write data to an rs485 port

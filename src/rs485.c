@@ -1,7 +1,7 @@
 #include "rs485.h"
 #include "mgos.h"
 
-void rs485_begin(struct rs485_port port, int baudRate) {
+bool rs485_begin(struct rs485_port port, int baudRate) {
     mgos_gpio_set_mode(port.directionPin, MGOS_GPIO_MODE_OUTPUT);
 
     struct mgos_uart_config ucfg;
@@ -11,9 +11,7 @@ void rs485_begin(struct rs485_port port, int baudRate) {
     ucfg.dev.rx_gpio = port.rxPin;
     ucfg.dev.tx_gpio = port.txPin;
 
-    if (!mgos_uart_configure(port.uartNumber, &ucfg)) {
-        LOG(LL_ERROR, ("Failed to configure port with uart number: %d", port.uartNumber));
-    }  
+    return mgos_uart_configure(port.uartNumber, &ucfg)) {
 }
 
 void begin_transmission(struct rs485_port port) {
