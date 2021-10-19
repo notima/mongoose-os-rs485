@@ -43,6 +43,6 @@ uint8_t rs485_read_byte(struct rs485_port port) {
     return byte;
 }
 
-bool mgos_Mongoose_OS_RS485_init(void) {
+bool mgos_rs485_init(void) {
     return true;
 }
