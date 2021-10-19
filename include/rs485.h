@@ -1,5 +1,6 @@
 #include "stdint.h"
 #include <stddef.h>
+#include <stdbool.h>
 
 struct rs485_port {
     uint16_t rxPin;

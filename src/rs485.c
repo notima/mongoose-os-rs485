@@ -11,7 +11,7 @@ bool rs485_begin(struct rs485_port port, int baudRate) {
     ucfg.dev.rx_gpio = port.rxPin;
     ucfg.dev.tx_gpio = port.txPin;
 
-    return mgos_uart_configure(port.uartNumber, &ucfg)
+    return mgos_uart_configure(port.uartNumber, &ucfg);
 }
 
 void begin_transmission(struct rs485_port port) {
