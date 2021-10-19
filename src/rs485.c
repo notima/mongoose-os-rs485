@@ -42,3 +42,7 @@ uint8_t rs485_read_byte(struct rs485_port port) {
     mgos_uart_read(port.uartNumber, &byte, 1);
     return byte;
 }
+
+bool mgos_Mongoose_OS_RS485_init(void) {
+    return true;
+}
