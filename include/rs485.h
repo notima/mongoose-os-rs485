@@ -40,8 +40,3 @@ int rs485_available(struct rs485_port port);
  * @return The next byte in the port buffer
  */
 uint8_t rs485_read_byte(struct rs485_port port);
-
-/**
- * init function required by Mongoose
- */
-bool mgos_rs485_init(void);
