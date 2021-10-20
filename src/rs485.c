@@ -8,20 +8,24 @@ bool rs485_begin(struct rs485_port port, int baudRate) {
     mgos_uart_config_set_defaults(port.uartNumber, &ucfg);
     
     ucfg.baud_rate = baudRate;
-    ucfg.dev.rx_gpio = port.rxPin;
-    ucfg.dev.tx_gpio = port.txPin;
+    ucfg.dev.rx_gpio = 4;
+    ucfg.dev.tx_gpio = 16;
 
-    return mgos_uart_configure(port.uartNumber, &ucfg);
+    bool initSuccess = mgos_uart_configure(port.uartNumber, &ucfg);
+
+    mgos_uart_set_rx_enabled(port.uartNumber, true);
+
+    return initSuccess;
 }
 
 void begin_transmission(struct rs485_port port) {
-    mgos_gpio_write(port.directionPin, true);
+    mgos_gpio_write(2, true);
     mgos_msleep(1);
 }
 
 void end_transmission(struct rs485_port port) {
     mgos_msleep(1);
-    mgos_gpio_write(port.directionPin, false);
+    mgos_gpio_write(2, false);
 }
 
 void rs485_write(struct rs485_port port, void* data, size_t length) {
