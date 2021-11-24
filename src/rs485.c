@@ -46,7 +46,8 @@ uint8_t rs485_read_byte(struct rs485_port port) {
 }
 
 void rs485_clear_buffer(struct rs485_port port) {
-    mgos_uart_read(port.uartNumber, NULL, mgos_uart_read_avail(port.uartNumber));
+    char buffer[mgos_uart_read_avail(port.uartNumber)];
+    mgos_uart_read(port.uartNumber, buffer, mgos_uart_read_avail(port.uartNumber));
 }
 
 bool mgos_rs485_init(void) {
