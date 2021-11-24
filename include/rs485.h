@@ -42,3 +42,9 @@ int rs485_available(struct rs485_port port);
  * @return The next byte in the port buffer
  */
 uint8_t rs485_read_byte(struct rs485_port port);
+
+/**
+ * Clear the uart buffer completely 
+ * @param port the port whose buffer will be cleared
+ */
+void rs485_clear_buffer(struct rs485_port port);
