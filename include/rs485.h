@@ -1,3 +1,10 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifndef RS485_H
+#define RS485_H
+
 #include "stdint.h"
 #include <stddef.h>
 #include <stdbool.h>
@@ -48,3 +55,9 @@ uint8_t rs485_read_byte(struct rs485_port port);
  * @param port the port whose buffer will be cleared
  */
 void rs485_clear_buffer(struct rs485_port port);
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
