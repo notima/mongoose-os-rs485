@@ -4,7 +4,7 @@ This is a library for transmitting and receiving data via an RS485 port.
 
 ## Usage
 
-See [rs485.h.md](wiki/rs485.h) for more extensive documentation
+See [rs485.h.md](https://github.com/notima/mongoose-os-rs485/wiki/rs485.h) for more extensive documentation
 
 Setting up RS485 port:
 
