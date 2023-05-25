@@ -4,6 +4,8 @@ This is a library for transmitting and receiving data via an RS485 port.
 
 ## Usage
 
+See [rs485.h.md](docs/rs485.h.md) for more extensive documentation
+
 Setting up RS485 port:
 
     struct rs485_port rs485;
