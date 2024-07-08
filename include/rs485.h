@@ -9,6 +9,12 @@ extern "C" {
 #include <stddef.h>
 #include <stdbool.h>
 
+enum Parity {
+  PARITY_NONE = 0,
+  PARITY_EVEN = 1,
+  PARITY_ODD = 2,
+};
+
 struct rs485_port {
     uint16_t rxPin;
     uint16_t txPin;
@@ -24,9 +30,12 @@ struct rs485_port {
  * This method must be called before the port can be used
  * @param port The port to initialize
  * @param baudRate The communication speed that will be used
+ * @param dataBits Number of data bits before stop bits
+ * @param stopBits Number of stop bits in between data bits
+ * @param parity Parity bit settings. use the parity enum.
  * @return true if port was successfully set up, otherwise false
  */
-bool rs485_begin(struct rs485_port port, int baudRate);
+bool rs485_begin(struct rs485_port port, int baudRate, int dataBits, int stopBits, enum Parity parity);
 
 /**
  * Write data to an rs485 port

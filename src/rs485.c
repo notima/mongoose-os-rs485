@@ -1,7 +1,7 @@
 #include "rs485.h"
 #include "mgos.h"
 
-bool rs485_begin(struct rs485_port port, int baudRate) {
+bool rs485_begin(struct rs485_port port, int baudRate, int dataBits, int stopBits, enum Parity parity) {
     mgos_gpio_set_mode(port.directionPin, MGOS_GPIO_MODE_OUTPUT);
 
     struct mgos_uart_config ucfg;
@@ -10,6 +10,9 @@ bool rs485_begin(struct rs485_port port, int baudRate) {
     ucfg.baud_rate = baudRate;
     ucfg.dev.rx_gpio = port.rxPin;
     ucfg.dev.tx_gpio = port.txPin;
+    ucfg.num_data_bits = dataBits;
+    ucfg.stop_bits = stopBits;
+    ucfg.parity = parity;
 
     bool initSuccess = mgos_uart_configure(port.uartNumber, &ucfg);
 
